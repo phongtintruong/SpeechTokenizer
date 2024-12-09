@@ -326,6 +326,15 @@ class SpeechTokenizerTrainer(nn.Module):
                 x, semantic_feature = batch
                 x = x.unsqueeze(1)
                 x_hat, loss_q, feature = self.generator(x)
+                print('x')
+                print(x)
+                print(x.shape)
+                print('x_hat')
+                print(x_hat)
+                print(x_hat.shape)
+                print('feature')
+                print(feature)
+                print(feature.shape)
                 
                 # Discriminators
                 self.optim_d.zero_grad()
@@ -380,6 +389,15 @@ class SpeechTokenizerTrainer(nn.Module):
                             x, semantic_feature = batch
                             x = x.unsqueeze(1)
                             x_hat, loss_q, feature = self.generator(x)
+                            print('x')
+                            print(x)
+                            print(x.shape)
+                            print('x_hat')
+                            print(x_hat)
+                            print(x_hat.shape)
+                            print('feature')
+                            print(feature)
+                            print(feature.shape)
                             mel_error = mel_loss(x, x_hat, **self.mel_loss_kwargs_list[0]).item()
                             total_mel_error += mel_error
                             loss_distill = self.distill_loss(feature, semantic_feature).item()
